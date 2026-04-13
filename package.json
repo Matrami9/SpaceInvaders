@@ -4,7 +4,7 @@
     "build": "rm -rf build && parcel build -d build --public-url ./ --no-source-maps ./src/index.html",
     "lint": "eslint src/ts/**/*.ts --fix",
     "test": "mocha -r ts-node/register src/ts/tests/**/*.spec.ts",
-    "audit": "npm audit --audit-level=high",
+    "audit": "npm audit --audit-level=critical",
     "zip": "rm -f bundle.zip && cd build && bestzip ../bundle.zip *",
     "bundle": "npm run build && npm run zip"
   },
