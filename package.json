@@ -9,12 +9,16 @@
     "bundle": "npm run build && npm run zip"
   },
   "devDependencies": {
+    "@types/chai": "^5.2.3",
+    "@types/jsdom": "^28.0.1",
+    "@types/mocha": "^10.0.10",
     "@typescript-eslint/eslint-plugin": "^8.58.1",
     "@typescript-eslint/parser": "^8.58.1",
     "bestzip": "^2.2.0",
     "chai": "^4.3.4",
     "eslint": "^8.0.0",
     "eslint-config-google": "^0.14.0",
+    "jsdom": "^29.0.2",
     "mocha": "^9.1.1",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.39.0",
