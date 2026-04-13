@@ -1,20 +1,52 @@
-name: Build and Deploy
+name: CI/CD Space Invaders
+
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
-  build-and-deploy:
+  quality-and-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          persist-credentials: false
-      - uses: actions/checkout@v2
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - uses: JamesIves/github-pages-deploy-action@releases/v3
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run Linter (Google Style Guide)
+        run: yarn run lint
+
+      - name: Security Audit
+        run: npm audit --audit-level=high
+
+      - name: Run Unit Tests
+        run: yarn test
+
+  deploy:
+    needs: quality-and-tests
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install and Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
+          folder: build
+          branch: gh-pages
