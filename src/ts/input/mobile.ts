@@ -1,10 +1,10 @@
-import { InitFunctionOutput, Input } from '.';
-import { log } from '../debug';
-import { Vector, normalize } from '../math/vector';
+import {InitFunctionOutput, Input} from '.';
+import {log} from '../debug';
+import {Vector, normalize} from '../math/vector';
 
 let position: Vector = {
   x: 0,
-  y: 0
+  y: 0,
 };
 
 let fire = false;
@@ -14,13 +14,13 @@ export function init(): InitFunctionOutput {
   const handle = document.querySelector('#handle') as HTMLElement;
   const plane = document.querySelector('#mobile-plane') as HTMLElement;
   const fireButton = document.querySelector('#button-fire');
-  
+
 
   return {
     getInput,
     setActive,
-    setInactive
-  }
+    setInactive,
+  };
 
   function setActive(ready: () => void) {
     handle.addEventListener('touchstart', onHandleGrab);
@@ -53,11 +53,11 @@ export function init(): InitFunctionOutput {
     const x = touch.pageX - (rect.x + rect.width / 2);
     const y = touch.pageY - (rect.y + rect.height / 2);
 
-    const { x: nx, y: ny } = normalize({ x, y });
+    const {x: nx, y: ny} = normalize({x, y});
 
     position = {
       x: nx,
-      y: ny
+      y: ny,
     };
 
     handle.style.transform = `translate(${nx * 56.26}px, ${ny * 56.25}px)`;
@@ -69,7 +69,7 @@ let moving = false;
 function getInput(): Input {
   return {
     axes: position,
-    fire
+    fire,
   };
 }
 

@@ -1,4 +1,4 @@
-import { magnitude, Vector } from './vector';
+import {magnitude, Vector} from './vector';
 
 export interface PolarVector {
   angle: number;
@@ -8,14 +8,14 @@ export interface PolarVector {
 export function toVector(polarVector: PolarVector): Vector {
   return {
     x: polarVector.radius * Math.cos(polarVector.angle),
-    y: polarVector.radius * Math.sin(polarVector.angle)
+    y: polarVector.radius * Math.sin(polarVector.angle),
   };
 }
 
 export function toPolarVector(vector: Vector): PolarVector {
   return {
     radius: magnitude(vector),
-    angle: Math.atan2(vector.y, vector.x)
+    angle: Math.atan2(vector.y, vector.x),
   };
 }
 
