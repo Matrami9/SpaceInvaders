@@ -14,7 +14,7 @@
 
 L'application est déployée automatiquement via GitHub Actions à chaque push sur la branche principale.
 
-👉 **[Jouer au jeu ici](#)**
+👉 **[Jouer au jeu ici](#https://konradlinkowski.github.io/SpaceInvaders/)**
 
 ---
 
