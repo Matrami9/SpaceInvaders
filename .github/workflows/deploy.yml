@@ -43,7 +43,7 @@ jobs:
       - name: Install and Build
         run: |
           npm ci
-          npm run build
+          npx parcel build index.html --out-dir build --public-url ./ --no-source-maps
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
