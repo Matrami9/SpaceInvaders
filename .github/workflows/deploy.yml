@@ -43,11 +43,15 @@ jobs:
       - name: Install and Build
         run: |
           npm ci
-          npx parcel build index.html --out-dir build --public-url ./ --no-source-maps
+          npx parcel build src/index.html --out-dir build --public-url ./ --no-source-maps
+      
+      - name: Build Docker Image
+        run: |
+          docker build -t space-invaders:latest .
+          echo "Image Docker construite avec succès !"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
           branch: gh-pages
-          
