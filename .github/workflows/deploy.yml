@@ -1,57 +1,22 @@
-name: CI/CD Space Invaders
+name: Deploy Second Game
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ master ] 
 
 jobs:
-  quality-and-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Linter (Google Style Guide)
-        run: npm run lint
-
-      - name: Security Audit
-        run: npm audit --audit-level=critical || true
-
-      - name: Run Unit Tests
-        run: npm test
-
   deploy:
-    needs: quality-and-tests
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install and Build
-        run: |
-          npm ci
-          npx parcel build src/index.html --out-dir build --public-url ./ --no-source-maps
-      
       - name: Build Docker Image
-        run: |
-          docker build -t space-invaders:latest .
-          echo "Image Docker construite avec succès !"
+        run: docker build -t keep-white-space:latest .
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build
+          folder: . # On déploie la racine car index.html est ici
           branch: gh-pages
