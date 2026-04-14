@@ -11,10 +11,11 @@
     "es2021": true
   },
   "rules": {
-    "require-jsdoc": "off",
-    "valid-jsdoc": "off",
-    "max-len": ["error", {"code": 120}],
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["warn"]
-  }
+  "require-jsdoc": "off",
+  "valid-jsdoc": "off",
+  "max-len": ["error", {"code": 120}],
+  "no-unused-vars": "off",
+  "@typescript-eslint/no-unused-vars": ["warn"],
+  "@typescript-eslint/no-unused-expressions": "off" 
+}
 }
