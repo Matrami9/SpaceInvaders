@@ -1,3 +1,4 @@
+
 # 🛸 Space Invaders — DevOps Project
 
 > Une implémentation moderne du classique **Space Invaders**, développée en TypeScript avec un pipeline DevSecOps complet.
@@ -14,7 +15,7 @@
 
 L'application est déployée automatiquement via GitHub Actions à chaque push sur la branche principale.
 
-👉 **[Jouer au jeu ici](#https://konradlinkowski.github.io/SpaceInvaders/)**
+👉 **[Jouer au jeu ici](https://konradlinkowski.github.io/SpaceInvaders/)**
 
 ---
 
