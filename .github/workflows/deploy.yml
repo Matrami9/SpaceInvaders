@@ -28,7 +28,7 @@ jobs:
         run: npm run lint
 
       - name: Security Audit
-        run: npm audit 
+        run: npm audit fix
 
       - name: Run Unit Tests
         run: npm test
