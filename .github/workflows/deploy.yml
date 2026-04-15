@@ -28,7 +28,7 @@ jobs:
         run: npm run lint
 
       - name: Security Audit
-        run: npm audit --audit-level=critical || true
+        run: npm audit 
 
       - name: Run Unit Tests
         run: npm test
