@@ -26,7 +26,8 @@ jobs:
         run: npm run lint
 
       - name: Security Audit
-        run: npm audit --audit-level=critical || true
+        run: npm audit
+        continue-on-error: true
      
   testing:
     runs-on: ubuntu-latest
